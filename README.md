@@ -18,7 +18,7 @@ Users can also create accounts and maintain a portfolio.
 ``` BASH
 source {nameofvirtualenv}/bin/activate
 ```
-Note the {nameofvirtualenv} is the one you chose, and doe not include {}.
+Note the {nameofvirtualenv} is the one you chose, and does not include {}.
 
 3. Set a FLASK_APP enviroment variable, so the flask app knows where to run:
 ``` BASH
@@ -31,3 +31,7 @@ flask run
 ```
 
 ## Resources (For Group):
+[Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+  * This source is **REALLY** useful. It provides a ton of info and tutorials on backend programming on flask.
+[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.3/)
+  * Documentation for SQLAlchemy. 
