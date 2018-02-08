@@ -33,5 +33,15 @@ flask run
 ## Resources (For Group):
 [Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
   * This source is **REALLY** useful. It provides a ton of info and tutorials on backend programming on flask.
+
 [Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.3/)
-  * Documentation for SQLAlchemy. 
+  * Documentation for SQLAlchemy.
+
+[Flask Web Forms](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms)
+  * Nice tutorial on setting up Flask Forms.
+
+[Flask DataBase](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)
+  * Nice Tutorial on setting up Databases and models. Uses SQLAlchemy.
+
+[Flask Logins](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
+  * Tutorial on logging in users.
