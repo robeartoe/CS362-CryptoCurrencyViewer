@@ -1,3 +1,4 @@
+from flask import render_template,send_file,request,redirect,url_for,flash,jsonify
 from app import app
 
 # TODO: Implement main stock page:
@@ -8,7 +9,7 @@ def index():
 # TODO: Implement Login Page
 @app.route('/login')
 def login():
-    return "Login Page"
+    return render_template('login.html')
 # TODO: Implement Signup Page
 @app.route('/signup')
 def signup():
@@ -17,3 +18,7 @@ def signup():
 @app.route('/users')
 def userPage():
     return "Users Page is Here and will be dynamic."
+
+@app.route('/resources')
+def resources():
+    return "Resources page is here."
