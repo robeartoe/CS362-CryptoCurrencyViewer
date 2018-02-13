@@ -5,12 +5,14 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Stocks Page"
-# TODO: Implement Login Page
+    return render_template('home.html')
+
+# TODO: Implement Login Page 
 @app.route('/login')
 def login():
     return render_template('login.html')
-# TODO: Implement Signup Page
+
+# TODO: Implement Signup Page NOTE: Will not be get, just post.
 @app.route('/signup')
 def signup():
     return "Signup Page"
@@ -21,4 +23,4 @@ def userPage():
 
 @app.route('/resources')
 def resources():
-    return "Resources page is here."
+    return render_template('resources.html')
