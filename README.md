@@ -7,7 +7,7 @@ Users can also create accounts and maintain a portfolio.
 
 ## Instructions(For Group):
 
-1. It's **HIGHLY** recommended to have a virtualenv running, when setting up the packages and enviroment for this project. More info about getting and setting up a virtualenv can be found  [here](http://docs.python-guide.org/en/latest/dev/virtualenvs/#lower-level-virtualenv).
+1. It's **HIGHLY** recommended to have a virtualenv running, when setting up the packages and enviroment for this project. More info about getting and setting up a virtualenv can be found  [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database.
 
 2. Install packages on python with the command:
   ``` py
