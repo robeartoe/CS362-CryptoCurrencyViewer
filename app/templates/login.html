@@ -13,17 +13,24 @@
     <div class="row">
       <div class="col s12 ">
         <span class ="light-blue-text lighten-2"> <h3>Login:</h3> </span>
-        <div class="card-panel hoverable center">
-          <div class="input-field">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
-          </div>
+        <div class="card-panel hoverable">
+          <form class="" action="index.html" method="post">
+            {{ form.hidden_tag() }}
 
-          <div class="input-field">
-            <label for="password">Password:</label>
-            <input type="password" name="password" class="validate">
-          </div>
+            <div class="input-field">
+              <label for="username">Username:</label>
+              <input type="text" name="username" id="username">
+            </div>
 
+            <div class="input-field">
+              <label for="password">Password:</label>
+              <input type="password" name="password" class="validate">
+            </div>
+
+            <div class="input-field">
+              <a href="/login" class="modal-action"><button class="btn waves-effect waves-light light-blue lighten-2" type="submit" name="signup">Submit<i class="material-icons right">send</i></button></a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
