@@ -3,6 +3,17 @@ body {
    min-height: 100vh;
    flex-direction: column;
  }
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+  /* cursor: auto; */
+}
+
+a.nostyle:visited {
+  text-decoration: inherit;
+    color: inherit;
+    /* cursor: auto; */
+}
 
  main {
    flex: 1 0 auto;

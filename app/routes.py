@@ -11,8 +11,19 @@ from app.forms import RegistrationForm
 def index():
     return render_template('home.html')
 
+<<<<<<< HEAD
 # TODO: Implement Login Page
 @app.route('/login',Methods['GET','POST'])
+=======
+# TODO: Implement Dynamic Currency Page
+@app.route('/currency')
+def currency():
+    return render_template('currency.html')
+
+
+# TODO: Implement Login Page
+@app.route('/login')
+>>>>>>> f580bdd940fc8c650fff3e2797721455681d9d91
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
