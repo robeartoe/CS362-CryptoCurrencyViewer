@@ -12,10 +12,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/materialize.min.css') }}"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/materialize.min.css') }}" media="screen,projection" />
 
   <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Programming Icons -->
   <link rel="stylesheet " href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css ">
@@ -23,6 +23,7 @@
 
 
 </head>
+
 <body class="white">
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -34,18 +35,16 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center">CryptoCurrency Viewer</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="/users"><i class="material-icons">account_circle</i></a></li>
-          <li><a href="/resources"> <i class="material-icons">business_center</i> </a></li>
+        <li><a href="/users"><i class="material-icons">account_circle</i></a></li>
+        <li><a href="/resources"> <i class="material-icons">business_center</i> </a></li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/login"> Login or Logout </a></li>
+        <li><a href="/login"> Login or Logout </a></li>
       </ul>
     </div>
   </nav>
 
-  {% block content %}
-
-  {% endblock %}
+  {% block content %} {% endblock %}
 </body>
 <footer class="page-footer light-blue lighten-2">
   <div class="container">
@@ -55,7 +54,7 @@
         <p>Created with: </p>
       </div>
       <div class="col s4 center">
-        <a class="waves-effect waves-light btn-large transparent "href="https://github.com/robeartoe/CS362-CryptoCurrencyViewer"><i class="devicon-github-plain"></i> <span class=""> Go to Repo</span> </a>
+        <a class="waves-effect waves-light btn-large transparent " href="https://github.com/robeartoe/CS362-CryptoCurrencyViewer"><i class="devicon-github-plain"></i> <span class=""> Go to Repo</span> </a>
       </div>
     </div>
   </div>
@@ -66,4 +65,5 @@
 
   </div>
 </footer>
+
 </html>

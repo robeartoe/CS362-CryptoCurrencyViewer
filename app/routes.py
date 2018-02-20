@@ -7,7 +7,13 @@ from app import app
 def index():
     return render_template('home.html')
 
-# TODO: Implement Login Page 
+# TODO: Implement Dynamic Currency Page
+@app.route('/currency')
+def currency():
+    return render_template('currency.html')
+
+
+# TODO: Implement Login Page
 @app.route('/login')
 def login():
     return render_template('login.html')
