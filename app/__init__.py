@@ -14,8 +14,4 @@ migrate = Migrate(app, db)
 app.config['DEBUG'] = True
 
 
-<<<<<<< HEAD
-from app import routes, models,forms
-=======
-from app import routes, models
->>>>>>> f580bdd940fc8c650fff3e2797721455681d9d91
+from app import routes,models,forms
