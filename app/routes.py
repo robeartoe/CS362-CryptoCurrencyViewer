@@ -27,6 +27,7 @@ def signup():
 def userPage():
     return "Users Page is Here and will be dynamic."
 
+#TODO: Implment Resources Page
 @app.route('/resources')
 def resources():
     return render_template('resources.html')
