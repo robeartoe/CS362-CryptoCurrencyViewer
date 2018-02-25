@@ -51,6 +51,6 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 # TODO: Implement Dynamic Currency Page
- @app.route('/currency')
- def currency():
-    return render_template('currency.html')		
+@app.route('/currency')
+def currency():
+    return render_template('currency.html')
