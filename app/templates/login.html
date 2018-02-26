@@ -16,16 +16,24 @@
         <div class="card-panel hoverable">
           <!-- TODO: Post Login -->
           <form class="" action="login.html" method="post">
+            {{LoginForm.hidden_tag() }}
             <!-- Save this spot for the form security -->
             <div class="input-field">
-              <label for="username">Username:</label>
-              <input type="text" name="username" id="username">
+              <!-- <label for="username">Username:</label> -->
+              <!-- <input type="text" name="username" id="username"> -->
+              {{LoginForm.username.label}}
+              {{LoginForm.username}}
             </div>
 
             <div class="input-field">
-              <label for="password">Password:</label>
-              <input type="password" name="password" class="validate">
+              <!-- <label for="password">Password:</label> -->
+              <!-- <input type="password" name="password" class="validate"> -->
+              {{LoginForm.password.label}}
+              {{LoginForm.password}}
             </div>
+            <p>
+              {{ LoginForm.remember_me(class_="filled-in") }} {{LoginForm.remember_me.label}}
+            </p>
 
             <div class="input-field">
               <a href="/login" class="modal-action"><button class="btn waves-effect waves-light light-blue lighten-2" type="submit" name="signup">Submit<i class="material-icons right">send</i></button></a>
@@ -44,16 +52,25 @@
             <div class="divider"></div>
             <div class="card-panel center">
               <!-- TODO: Post Signup -->
-              <form class="" action="signup.html" method="post">
-                <div class="input-field"><label for="username">Username:</label>
-                  <input type="text" name="username" id="username"></div>
+              <form class="" action="signup" method="post">
+                {{RegistrationForm.hidden_tag()}}
+                <div class="input-field">
+                  {{RegistrationForm.username.label}}
+                  {{RegistrationForm.username}}
 
-                <div class="input-field"><label for="password">Password:</label><input type="password" name="password" class="validate"></div>
+                </div>
+                <div class="input-field">
 
-                <div class="input-field"><label for="confirmPassword">Confirm Password:</label><input type="password" name="confirmPassword" class="validate"></div>
+                  {{RegistrationForm.password.label}}
+                  {{RegistrationForm.password}}
+                </div>
 
+                <!-- <div class="input-field">
+                  <label for="confirmPassword">Confirm Password:</label><input type="password" name="confirmPassword" class="validate">
+                </div>
+                -->
                 <div class="modal-footer white">
-                  <a href="/signup" class="modal-action"><button class="btn waves-effect waves-light light-blue lighten-2" type="submit" name="signup">Submit<i class="material-icons right">send</i></button></a>
+                  <button class="btn waves-effect waves-light light-blue lighten-2" type="submit" name="signup">Submit<i class="material-icons right">send</i></button></a>
                 </div>
               </form>
             </div>
