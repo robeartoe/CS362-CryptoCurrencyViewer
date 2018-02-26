@@ -1,6 +1,12 @@
 
 myproject/
 
+crypto/
+
+*.pyc
+
+/app/*.pyc
+
 materialize/
 
 __pycache__/
