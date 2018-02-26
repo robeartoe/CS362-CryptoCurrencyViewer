@@ -40,7 +40,11 @@
       </ul>
       <!-- TODO: Figure out login validation -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/login"> Login or Logout </a></li>
+        {% if current_user.is_anonymous %}
+        <li><a href="/login"> Login</a></li>
+        {% else %}
+        <li><a href="/logout"> Logout </a></li>        
+        {% endif %}
       </ul>
     </div>
   </nav>
