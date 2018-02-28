@@ -35,10 +35,9 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center">CryptoCurrency Viewer</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/users"><i class="material-icons left">account_circle</i>Profile</a></li>
+        <li><a href="{{ url_for('user', username=current_user.username) }}"><i class="material-icons left">account_circle</i>Profile</a></li>
         <li><a href="/resources"> <i class="material-icons left">business_center</i>Resources</a></li>
       </ul>
-      <!-- TODO: Figure out login validation -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if current_user.is_anonymous %}
         <li><a href="/login"> <i class="material-icons left">person</i>Login</a></li>
@@ -50,7 +49,7 @@
   </nav>
 
 
-
+<!-- TODO: See if this or Toast will be better options. -->
   {% with messages = get_flashed_messages() %}
   {% if messages %}
     {% for message in messages %}

@@ -1,6 +1,6 @@
 from flask import render_template,send_file,request,redirect,url_for,flash,jsonify
 from app import app
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user,login_required
 from app.models import User
 from app import db
 from app.forms import RegistrationForm, LoginForm
@@ -11,7 +11,6 @@ from app.forms import RegistrationForm, LoginForm
 def index():
     return render_template('home.html')
 
-# TODO: Implement Login Page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -35,7 +34,7 @@ def logout():
     print("LOGOUT")
     flash('You have logged out!')
     logout_user()
-    return redirect(url_for('login.html'))
+    return redirect(url_for('login'))
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -49,9 +48,12 @@ def signup():
         return redirect(url_for('login'))
 
 # TODO: Implement Users Page
-@app.route('/users')
-def userPage():
-    return "Users Page is Here and will be dynamic."
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    # print(user)
+    return render_template('user.html',user=user)
 
 #TODO: Implment Resources Page
 @app.route('/resources')
