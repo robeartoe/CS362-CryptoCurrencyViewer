@@ -23,14 +23,19 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        flash('You have logged in!')
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', LoginForm=form,RegistrationForm=signup)
 
-@app.route('/logout')
+@app.route('/logout',methods=['GET'])
 def logout():
+    if request.method == 'GET':
+        print('LOGOUT')
+    print("LOGOUT")
+    flash('You have logged out!')
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login.html'))
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -41,8 +46,6 @@ def signup():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
-    else:
         return redirect(url_for('login'))
 
 # TODO: Implement Users Page

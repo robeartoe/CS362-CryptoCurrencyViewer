@@ -35,21 +35,37 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center">CryptoCurrency Viewer</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/users"><i class="material-icons">account_circle</i></a></li>
-        <li><a href="/resources"> <i class="material-icons">business_center</i> </a></li>
+        <li><a href="/users"><i class="material-icons left">account_circle</i>Profile</a></li>
+        <li><a href="/resources"> <i class="material-icons left">business_center</i>Resources</a></li>
       </ul>
       <!-- TODO: Figure out login validation -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if current_user.is_anonymous %}
-        <li><a href="/login"> Login</a></li>
+        <li><a href="/login"> <i class="material-icons left">person</i>Login</a></li>
         {% else %}
-        <li><a href="/logout"> Logout </a></li>        
+        <li><a href="/logout"><i class="material-icons left">person_outline</i>Logout</a></li>
         {% endif %}
       </ul>
     </div>
   </nav>
 
-  {% block content %} {% endblock %}
+
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="chip">
+      <a href="#"><i class="close material-icons right">close</i></a>
+      <span class="">{{message}}</span>
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  {% block content %}
+
+  {% endblock %}
+
 </body>
 <footer class="page-footer light-blue lighten-2">
   <div class="container">
