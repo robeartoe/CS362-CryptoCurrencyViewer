@@ -4,12 +4,15 @@ from flask_login import current_user, login_user, logout_user,login_required
 from app.models import User
 from app import db
 from app.forms import RegistrationForm, LoginForm
+from app.CCApi import getCoinList
 
 # TODO: Implement main stock page:
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('home.html')
+    coins = getCoinList()
+    coins = coins['Data']
+    return render_template('home.html',currencies = coins)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -29,9 +32,6 @@ def login():
 
 @app.route('/logout',methods=['GET'])
 def logout():
-    if request.method == 'GET':
-        print('LOGOUT')
-    print("LOGOUT")
     flash('You have logged out!')
     logout_user()
     return redirect(url_for('login'))
