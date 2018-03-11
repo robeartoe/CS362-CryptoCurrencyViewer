@@ -9,7 +9,7 @@
         <div class="col s2 offset-s1">
           <div class="card">
             <div class="card-image">
-              <span><a href="https://www.cryptocompare.com{{coinInfo[item].Url}}"><img src="https://www.cryptocompare.com{{coinInfo[item].ImageUrl}}" alt=""></a> </span>
+              <span><a href="{{ url_for('currency',name=coinInfo[item].Name) }}"><img src="https://www.cryptocompare.com{{coinInfo[item].ImageUrl}}"></a> </span>
               <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="row">
-      <!-- TODO: Pagination ... Or Maybe not? -->
+      <!-- TODO: Pagination  -->
       <ul class="pagination">
         {% if prevURL %}
         <li class="waves-effect"><a href="{{prevURL}}"><i class="material-icons">chevron_left</i></a></li>

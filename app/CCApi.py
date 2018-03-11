@@ -6,12 +6,13 @@ def getCoinList():
     someDict = r.json()
     someDict = someDict["Data"]
 
+    return someDict
+
     # someDict = list(someDict['Data'].values()) #A list of dicts.
     # sortedDict = sorted(someDict,key=itemgetter("SortOrder")) #This is now a list of dicts. From most to least popular.
     # print(sortedDict)
     # print(type(someDict))
 
-    return someDict
 
 def getPrices(currentPage,CoinList):
     CoinList = list(CoinList.values()) #A list of dicts.
@@ -21,7 +22,6 @@ def getPrices(currentPage,CoinList):
         prices.append(CoinList[index]["Symbol"])
 
     prices = ','.join(prices)
-    # print(prices)
 
     payload = {"fsyms":prices,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
     r = requests.get('https://min-api.cryptocompare.com/data/pricemulti',params = payload)
@@ -36,10 +36,10 @@ def rateLimit():
 # This function will make several API calls to get info for this particular coin.
 # To be used in the detailed coin page.
 def getFullInfo(coin):
-    pass
+    payload = {"fsyms":coin,"tsyms":"USD","BTC","extraParams":"studentCurrencyWebViewer"}
+    r = requests.get('https://min-api.cryptocompare.com/data/pricemultifull')
+    return r.json()
 
 # rateLimit()
-test = getCoinList()
-getPrices(1,test)
-
-#               <!-- <p>{{currencyPrices[currencies[item].Symbol]["USD"]}}</p> -->
+# test = getCoinList()
+# getPrices(1,test)

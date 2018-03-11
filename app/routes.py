@@ -11,6 +11,7 @@ from app.CCApi import getCoinList,getPrices
 @app.route('/index', methods=['GET','POST'])
 def index():
     page = request.args.get('page',1,type=int)
+
     coinList = getCoinList()
     coins = getPrices(page,coinList)
     if page > 1:
@@ -67,6 +68,16 @@ def resources():
     return render_template('resources.html')
 
 # TODO: Implement Dynamic Currency Page
-@app.route('/currency')
+@app.route('/currency',methods=['GET','POST'])
 def currency():
+    page = request.args.get('name')
+    coinList = getCoinList()
+
+    image = someDict[page]["ImageUrl"]
+    coinSupply = someDict[page]["TotalCoinSupply"]
+
+    stats = getFullInfo(page)
+
+
+
     return render_template('currency.html')
