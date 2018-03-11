@@ -4,15 +4,22 @@ from flask_login import current_user, login_user, logout_user,login_required
 from app.models import User
 from app import db
 from app.forms import RegistrationForm, LoginForm
-from app.CCApi import getCoinList
+from app.CCApi import getCoinList,getPrices
 
 # TODO: Implement main stock page:
-@app.route('/')
-@app.route('/index')
+@app.route('/',methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 def index():
-    coins = getCoinList()
-    coins = coins['Data']
-    return render_template('home.html',currencies = coins)
+    page = request.args.get('page',1,type=int)
+    coinList = getCoinList()
+    coins = getPrices(page,coinList)
+    if page > 1:
+        prevURL = url_for('index',page=page-1)
+    else:
+        prevURL = None
+    nextURL = url_for('index',page=page+1)
+
+    return render_template('home.html',currencies = coins,coinInfo = coinList,nextURL=nextURL,prevURL=prevURL)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -52,7 +59,6 @@ def signup():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    # print(user)
     return render_template('user.html',user=user)
 
 #TODO: Implment Resources Page
