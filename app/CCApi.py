@@ -16,17 +16,22 @@ def getCoinList():
 
 def getPrices(currentPage,CoinList):
     CoinList = list(CoinList.values()) #A list of dicts.
-    prices = []
+    # prices = []
+    #
+    # for index in range((currentPage-1)*40,currentPage*40):
+    #     prices.append(CoinList[index]["Symbol"])
+    #
+    # prices = ','.join(prices)
+    #
+    # payload = {"fsyms":prices,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
+    # r = requests.get('https://min-api.cryptocompare.com/data/pricemulti',params = payload)
+    # # print(r.status_code)
+    # # print(r.json())
 
-    for index in range((currentPage-1)*40,currentPage*40):
-        prices.append(CoinList[index]["Symbol"])
+    payload = {"start":,"limit":50}
+    r = requests.get('https://api.coinmarketcap.com/ticker')
+    
 
-    prices = ','.join(prices)
-
-    payload = {"fsyms":prices,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
-    r = requests.get('https://min-api.cryptocompare.com/data/pricemulti',params = payload)
-    # print(r.status_code)
-    # print(r.json())
     return r.json()
 
 def rateLimit():
@@ -36,7 +41,7 @@ def rateLimit():
 # This function will make several API calls to get info for this particular coin.
 # To be used in the detailed coin page.
 def getFullInfo(coin):
-    payload = {"fsyms":coin,"tsyms":"USD","BTC","extraParams":"studentCurrencyWebViewer"}
+    payload = {"fsyms":coin,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
     r = requests.get('https://min-api.cryptocompare.com/data/pricemultifull')
     return r.json()
 

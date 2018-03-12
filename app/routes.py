@@ -71,12 +71,12 @@ def resources():
 @app.route('/currency',methods=['GET','POST'])
 def currency():
     page = request.args.get('name')
-    coinList = getCoinList()
+    # coinList = getCoinList()
 
-    image = someDict[page]["ImageUrl"]
-    coinSupply = someDict[page]["TotalCoinSupply"]
+    # image = someDict[page]["ImageUrl"]
+    # coinSupply = someDict[page]["TotalCoinSupply"]
 
-    stats = getFullInfo(page)
+    # stats = getFullInfo(page)
 
 
 
