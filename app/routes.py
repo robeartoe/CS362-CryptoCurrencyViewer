@@ -13,7 +13,7 @@ def index():
     page = request.args.get('page',1,type=int)
 
     coinList = getCoinList()
-    coins = getPrices(page,coinList)
+    coins = getPrices(page)
     if page > 1:
         prevURL = url_for('index',page=page-1)
     else:

@@ -9,13 +9,19 @@
         <div class="col s2 offset-s1">
           <div class="card">
             <div class="card-image">
-              <span><a href="{{ url_for('currency',name=coinInfo[item].Name) }}"><img src="https://www.cryptocompare.com{{coinInfo[item].ImageUrl}}"></a> </span>
+              <span>
+                <a href="{{ url_for('currency',name=item["symbol"])}}">
+                {% if coinInfo[item["symbol"]] is defined %}
+                 <img src="https://www.cryptocompare.com{{coinInfo[item["symbol"]].ImageUrl}}" alt="">
+                {% else %}
+                <h4>No Picture Available</h4>
+                {% endif %}
+                 </a></span>
               <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
-              <span class="card-title"><a href="https://www.cryptocompare.com{{coinInfo[item].Url}}" class="nostyle">{{coinInfo[item].Name}} </a></span>
-              <p>Current Price: {{currencies[item].USD}} USD</p>
-
+              <span class="card-title"><a href="{{ url_for('currency',name=item["symbol"]) }}" class="nostyle">{{item["name"]}} </a></span>
+              <p>Current Price: {{item["price_usd"]}} USD</p>
             </div>
           </div>
         </div>
@@ -23,12 +29,20 @@
         <div class="col s2">
           <div class="card">
             <div class="card-image">
-              <span> <a href="https://www.cryptocompare.com{{coinInfo[item].Url}}"> <img src="https://www.cryptocompare.com{{coinInfo[item].ImageUrl}}" alt=""></a> </span>
+              <span>
+                <a href="{{ url_for('currency',name=item["symbol"])}}">
+                {% if coinInfo[item["symbol"]] is defined %}
+                 <img src="https://www.cryptocompare.com{{coinInfo[item["symbol"]].ImageUrl}}" alt="">
+                {% else %}
+                <h4>No Picture Available</h4>
+                {% endif %}
+                 </a></span>
               <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
-              <span class="card-title"><a href="https://www.cryptocompare.com{{coinInfo[item].Url}}" class="nostyle">{{coinInfo[item].Name}} </a></span>
-              <p>Current Price: {{currencies[item].USD}} USD</p>
+              <span class="card-title"><a href="{{ url_for('currency',name=item["symbol"]) }}" class="nostyle">{{item["name"]}} </a></span>
+              <p>Current Price: {{item["price_usd"]}} USD</p>
+
             </div>
           </div>
         </div>
@@ -37,22 +51,6 @@
       </div>
     {% endfor %}
 
-    <div class="row">
-      <div class="col s2 offset-s1">
-        <div class="card">
-          <div class="card-image">
-            <span><a href="/currency"><img src="https://bitcoin.org/img/icons/opengraph.png"></a></span>
-            <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
-          </div>
-          <div class="card-content">
-            <span class="card-title"><a href="/currency" class="nostyle">BitCoin Cash Cash </a></span>
-            <p>Price: $11,426.06</p>
-            <p>Market Cap: $192,815,470,916</p>
-            <p>24 Hour Change: 8.31%</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <!-- TODO: Pagination  -->
       <ul class="pagination">
