@@ -4,7 +4,7 @@ from flask_login import current_user, login_user, logout_user,login_required
 from app.models import User
 from app import db
 from app.forms import RegistrationForm, LoginForm
-from app.CCApi import getCoinList,getPrices
+from app.CCApi import getCoinList,getPrices,getFullInfo
 
 # TODO: Implement main stock page:
 @app.route('/',methods=['GET','POST'])
@@ -70,14 +70,9 @@ def resources():
 # TODO: Implement Dynamic Currency Page
 @app.route('/currency',methods=['GET','POST'])
 def currency():
-    page = request.args.get('name')
-    # coinList = getCoinList()
+    page = request.args.get('id')
 
-    # image = someDict[page]["ImageUrl"]
-    # coinSupply = someDict[page]["TotalCoinSupply"]
+    coinList = getCoinList()
+    stats = getFullInfo(page)
 
-    # stats = getFullInfo(page)
-
-
-
-    return render_template('currency.html')
+    return render_template('currency.html',coinInfo = coinList,stats = stats)

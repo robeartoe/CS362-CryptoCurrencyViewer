@@ -10,9 +10,9 @@
           <div class="card">
             <div class="card-image">
               <span>
-                <a href="{{ url_for('currency',name=item["symbol"])}}">
+                <a href="{{ url_for('currency',id=item.id)}}">
                 {% if coinInfo[item["symbol"]] is defined %}
-                 <img src="https://www.cryptocompare.com{{coinInfo[item["symbol"]].ImageUrl}}" alt="">
+                 <img src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
                 {% else %}
                 <h4>No Picture Available</h4>
                 {% endif %}
@@ -20,7 +20,7 @@
               <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
-              <span class="card-title"><a href="{{ url_for('currency',name=item["symbol"]) }}" class="nostyle">{{item["name"]}} </a></span>
+              <span class="card-title"><a href="{{ url_for('currency', id=item.id) }}" class="nostyle">{{item["name"]}} </a></span>
               <p>Current Price: {{item["price_usd"]}} USD</p>
             </div>
           </div>
@@ -30,9 +30,9 @@
           <div class="card">
             <div class="card-image">
               <span>
-                <a href="{{ url_for('currency',name=item["symbol"])}}">
+                <a href="{{ url_for('currency',id=item.id)}}">
                 {% if coinInfo[item["symbol"]] is defined %}
-                 <img src="https://www.cryptocompare.com{{coinInfo[item["symbol"]].ImageUrl}}" alt="">
+                 <img src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
                 {% else %}
                 <h4>No Picture Available</h4>
                 {% endif %}
@@ -40,7 +40,7 @@
               <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
-              <span class="card-title"><a href="{{ url_for('currency',name=item["symbol"]) }}" class="nostyle">{{item["name"]}} </a></span>
+              <span class="card-title"><a href="{{ url_for('currency',id=item.id) }}" class="nostyle">{{item["name"]}} </a></span>
               <p>Current Price: {{item["price_usd"]}} USD</p>
 
             </div>

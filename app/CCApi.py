@@ -1,5 +1,4 @@
 import requests
-from operator import itemgetter
 
 def getCoinList():
     r = requests.get('https://min-api.cryptocompare.com/data/all/coinlist')
@@ -16,12 +15,14 @@ def rateLimitCC():
     r = requests.get('https://min-api.cryptocompare.com/stats/rate/hour/limit')
     print(r.json())
 
-# To be used in the detailed coin page.
 def getFullInfo(coin):
-    payload = {"fsyms":coin,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
-    r = requests.get('https://min-api.cryptocompare.com/data/pricemultifull')
-    return r.json()
+    # payload = {"fsyms":coin,"tsyms":"USD,BTC","extraParams":"studentCurrencyWebViewer"}
+    # r = requests.get('https://min-api.cryptocompare.com/data/pricemultifull')
+    # return r.json()
 
-# rateLimit()
-# test = getCoinList()
-# getPrices(1,test)
+    payload={"id":coin}
+    url = 'https://api.coinmarketcap.com/v1/ticker/{}'.format(coin)
+    r = requests.get(url)
+    coin = r.json()
+    return(coin[0])
+
