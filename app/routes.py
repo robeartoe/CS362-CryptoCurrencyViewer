@@ -62,6 +62,13 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user.html',user=user)
 
+@app.route('/addCurrency',methods=['POST'])
+@login_required
+def addCurrency():
+    coin = request.args.get('coin')
+
+    pass
+
 #TODO: Implment Resources Page
 @app.route('/resources')
 def resources():

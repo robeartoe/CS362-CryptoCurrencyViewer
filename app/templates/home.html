@@ -17,7 +17,11 @@
                 <h4>No Picture Available</h4>
                 {% endif %}
                  </a></span>
-              <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
+                 {% if current_user.is_anonymous %}
+                 <a href="{{url_for('login')}}" class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
+                 {% else %}
+                 <a class="btn-floating halfway-fab waves-effect waves-light light-blue" href="{{url_for('addCurrency',coin = item.id)}}"><i class="material-icons">add</i></a>
+                 {% endif %}
             </div>
             <div class="card-content">
               <span class="card-title"><a href="{{ url_for('currency', id=item.id) }}" class="nostyle">{{item["name"]}} </a></span>
@@ -37,8 +41,11 @@
                 <h4>No Picture Available</h4>
                 {% endif %}
                  </a></span>
-              <a class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
-            </div>
+                 {% if current_user.is_anonymous %}
+                 <a href="{{url_for('login')}}" class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
+                 {% else %}
+                 <a class="btn-floating halfway-fab waves-effect waves-light light-blue" href="{{url_for('addCurrency',coin = item.id)}}"><i class="material-icons">add</i></a>
+                 {% endif %}            </div>
             <div class="card-content">
               <span class="card-title"><a href="{{ url_for('currency',id=item.id) }}" class="nostyle">{{item["name"]}} </a></span>
               <p>Current Price: {{item["price_usd"]}} USD</p>
