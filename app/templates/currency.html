@@ -7,28 +7,27 @@
         {% if coinInfo[stats.symbol] is defined %}
         <img  src="https://www.cryptocompare.com{{coinInfo[stats.symbol].ImageUrl}}" class="responsive-img">
         {% else %}
-        <h4>No Picture Available</h4>
+        <h4 style="text-align:center">No Picture Available</h4>
         {% endif %}
-        <h3 style="text-align:center">{{stats["name"]}}</h3>
+        <h3 class="light-blue-text center-align">{{stats["name"]}}</h3>
       </div>
       <div class="col s9">
-        <div>
-          <ul class="collection">
-            <li>
-              <span>Symbol:{{stats.symbol}}</span>`
-            </li>
-            <li>
-              <span>Percent Change:{{stats.symbol}}</span>
-            </li>
-            <li>
-              <span>Market Cap(USD):{{stats.symbol}}</span>
+        <div class="row">
+          <div class="col s6">
+            <ul class="collection">
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text"> Available Supply: </h6> <h6 class="center-align"> {{stats.available_supply}} </h6> </span></li>
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text"> Max Supply: </h6> <h6 class="center-align"> {{stats.max_supply}} </h6> </span></li>
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text"> Total Supply: </h6> <h6 class="center-align"> {{stats.total_supply}} </h6> </span></li>
 
-            </li>
-            <li>
-              <span>Market Cap():{{stats.symbol}}</span>
-
-            </li>
-          </ul>
+            </ul>
+          </div>
+          <div class="col s6">
+            <ul class="collection">
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text"> Percent Change 1h: </h6> <h6 class="center-align"> {{stats.percent_change_1h}} </h6> </span></li>
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text"> Percent Change 24h: </h6> <h6 class="center-align"> {{stats.percent_change_24h}} </h6> </span></li>
+              <li class="collection-item"> <span> <h6 class="left-align light-blue-text">  Percent Change 7D: </h6> <h6 class="center-align"> {{stats.percent_change_7d}}  </h6> </span> </li>
+            </ul>
+          </div>
         </div>
         <ul class="tabs">
           <div class="indicator light-blue"></div>
@@ -41,12 +40,16 @@
           <table>
             <thead>
               <tr>
-                <th>asf</th>
+                <th>Price(USD)</th>
+                <th>Market Cap(USD)</th>
+                <th>24h Volume(USD)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>asf</td>
+                <td>{{stats.price_usd}}</td>
+                <td>{{stats.market_cap_usd}}</td>
+                <td>{{stats["24h_volume_usd"]}}</td>
               </tr>
             </tbody>
           </table>
@@ -55,12 +58,12 @@
           <table>
             <thead>
               <tr>
-                <th>asdf</th>
+                <th>Price: (BTC)</th>
               </tr>
-            </thead> 
+            </thead>
             <tbody>
               <tr>
-                <td>asdf</td>
+                <td>{{stats.price_btc}}</td>
               </tr>
             </tbody>
           </table>
@@ -68,7 +71,10 @@
       </div>
     </div>
     <div class="row">
-      <p>table</p>
+      <div class="center-align">
+        <p>table</p>
+
+      </div>
     </div>
   </div>
 </main>
