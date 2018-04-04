@@ -1,7 +1,8 @@
 from flask import render_template,send_file,request,redirect,url_for,flash,jsonify
 from app import app
+import json
 from flask_login import current_user, login_user, logout_user,login_required
-from app.models import User
+from app.models import User,UserCurrencies
 from app import db
 from app.forms import RegistrationForm, LoginForm
 from app.CCApi import getCoinList,getPrices,getFullInfo
@@ -62,24 +63,32 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user.html',user=user)
 
-@app.route('/addCurrency',methods=['POST'])
+@app.route('/addCurrency',methods=['GET','POST'])
 @login_required
 def addCurrency():
-    coin = request.args.get('coin')
-
-    pass
+    ID =  request.form['currencyID']
+    Amount = request.form['currencyAmount']
+    print(ID,Amount)
+    return json.dumps({'status':'OK','ID':ID,'Amount':Amount})
+    
+    # coin = request.args.get('coin')
+    # # page = request.args.get('page',1,type=int)
+    # user = User.query.filter_by(username=current_user.username).first_or_404()
+    # currency = UserCurrencies(currency=coin,user_id=user.id)
+    # db.session.add(currency)
+    # db.session.commit()
+    # flash("Added Currency: {} to your account!".format(coin))
+    # print("Added Currency: {} in {}".format(coin,currency))
+    # return redirect(url_for('index'))
 
 #TODO: Implment Resources Page
 @app.route('/resources')
 def resources():
     return render_template('resources.html')
 
-# TODO: Implement Dynamic Currency Page
 @app.route('/currency',methods=['GET','POST'])
 def currency():
     page = request.args.get('id')
-
     coinList = getCoinList()
     stats = getFullInfo(page)
-
     return render_template('currency.html',coinInfo = coinList,stats = stats)

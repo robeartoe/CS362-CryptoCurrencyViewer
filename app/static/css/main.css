@@ -1,8 +1,13 @@
-body {
+body{
    display: flex;
    min-height: 100vh;
    flex-direction: column;
- }
+}
+
+main{
+   flex: 1 0 auto;
+}
+
 a.nostyle:link {
   text-decoration: inherit;
   color: inherit;
@@ -14,7 +19,3 @@ a.nostyle:visited {
     color: inherit;
     /* cursor: auto; */
 }
-
- main {
-   flex: 1 0 auto;
- }
