@@ -7,7 +7,6 @@ from app import db
 from app.forms import RegistrationForm, LoginForm
 from app.CCApi import getCoinList,getPrices,getFullInfo
 
-# TODO: Implement main stock page:
 @app.route('/',methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
 def index():
@@ -65,11 +64,9 @@ def user(username):
     currencies = UserCurrencies.query.filter_by(user_id=user.id).all()
     coinList = getCoinList()
 
-    # print(user)
-    # print(currencies)
     return render_template('user.html',user=user.username,currencies=currencies,coinInfo = coinList)
 
-@app.route('/addCurrency',methods=['GET','POST'])
+@app.route('/addCurrency',methods=['POST'])
 @login_required
 def addCurrency():
     ID =  request.form['currencyID']
@@ -89,12 +86,28 @@ def addCurrency():
         db.session.commit()
         return json.dumps({'status':'OK','ID':ID,'Amount':Amount})
 
+@app.route('/updateCurrency',methods=['POST'])
+@login_required
+def updateCurrency():
+    status = request.form['status']
+    print(status)
+    user = User.query.filter_by(username=current_user.username).first_or_404()
+    if status == "update":
+        currency = db.session.query(UserCurrencies).filter_by(user_id=user.id,currency=request.form['currencyID']).first()
+        currency.amount = request.form['currencyAmount']
+        db.session.commit()
+        return json.dumps({'status':'OK'})
+    elif status == "delete":
+        currency = db.session.query(UserCurrencies.user_id).filter_by(currency=request.form['currencyID']).delete()
+        db.session.commit()
+        return json.dumps({'status':'OK'})
+    pass
 #TODO: Implment Resources Page
 @app.route('/resources')
 def resources():
     return render_template('resources.html')
 
-@app.route('/currency',methods=['GET','POST'])
+@app.route('/currency',methods=['GET'])
 def currency():
     page = request.args.get('id')
     coinList = getCoinList()

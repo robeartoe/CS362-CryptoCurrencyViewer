@@ -1,7 +1,6 @@
 {% extends "index.html" %} {% block content %}
 <main>
   <div class="container">
-    <!-- TODO: Templating with several currencys. -->
     {% for itemRow in currencies | batch(5) %}
     <div class="row">
       {% for item in itemRow %} {% if loop.index == 1%}
@@ -13,7 +12,7 @@
                 {% if coinInfo[item["symbol"]] is defined %}
                  <img src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
                 {% else %}
-                <h4>No Picture Available</h4>
+                <i class="material-icons large center">broken_image</i>
                 {% endif %}
                 </a>
             </span>
@@ -55,7 +54,7 @@
                 {% if coinInfo[item["symbol"]] is defined %}
                  <img src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
                 {% else %}
-                <h4>No Picture Available</h4>
+                <i class="material-icons large center">broken_image</i>
                 {% endif %}
                  </a></span>
             {% if current_user.is_anonymous %}
@@ -74,7 +73,7 @@
                      <label for="icon_prefix light-blue-text">Currency Amount:</label>
                    </div>
                    <button class="btn waves-effect waves-light light-blue" type="submit" name="action" >Submit
-                     <i class="material-icons right light-blue-text">send</i>
+                     <i class="material-icons right light-blue">send</i>
                    </button>
                  </form>
                </div>
@@ -92,7 +91,6 @@
     {% endfor %}
 
     <div class="row">
-      <!-- TODO: Pagination  -->
       <ul class="pagination">
         {% if prevURL %}
         <li class="waves-effect"><a href="{{prevURL}}"><i class="material-icons">chevron_left</i></a></li>
@@ -100,8 +98,6 @@
         <li class="waves-effect"><a href="{{nextURL}}"><i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>
-
   </div>
-
 </main>
 {% endblock %}

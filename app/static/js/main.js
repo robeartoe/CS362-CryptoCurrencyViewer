@@ -5,11 +5,6 @@ $(document).ready(function() {
       //initialize all modals
       $('.modal').modal();
 
-       // var messages = "{{ get_flashed_messages() }}";
-       // if (typeof messages != 'undefined' && messages != '[]') {
-       //   Materialize.toast(messages,40);
-       // };
-
        //now you can open modal from code
        //$('#modal1').modal('open');
 
@@ -39,11 +34,39 @@ function addCurrency(currencyID,modalID,symbol){
   })
   return false;
 }
+function updateCurrency(currencyID,modalID){
+  console.log("updateCurrency Called");
+  $(modalID).modal('close');
+  var amount = $(modalID).find('#money').val();
+  $.post('/updateCurrency',{
+    currencyID:currencyID,
+    currencyAmount:amount,
+    status:"update"
+  }).done(function(updateCurrency){
+    Materialize.toast('I have updated the currency amount!', 4000) // 4000 is the duration of the toast
+  }).fail(function(){
+    Materialize.toast('I have failed to update the currency!', 4000) // 4000 is the duration of the toast
+  })
+  console.log(currencyID);
 
-function removeCurrency(){
-
+  $("#li"+currencyID).find("p > #money").text(amount);
+  return false;
 };
 
-function undateCurrency(){
-
+function removeCurrency(currencyID,modalID){
+  console.log("removeCurrency Called");
+  $('#delete'+modalID).modal('open');
+  $('#confirmDelete'+currencyID).click(function(){
+    $('#delete'+modalID).modal('close');
+    $.post('/updateCurrency',{
+      currencyID:currencyID,
+      status:"delete"
+    }).done(function(removeCurrency){
+      Materialize.toast('I have deleted the currency!', 4000) // 4000 is the duration of the toast
+    }).fail(function(){
+      Materialize.toast('I have failed to delete the currency!', 4000) // 4000 is the duration of the toast
+    })
+  });
+  $('#li'+currencyID).remove();
+  return false;
 };

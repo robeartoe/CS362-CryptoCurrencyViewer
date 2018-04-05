@@ -1,5 +1,3 @@
-# TODO: Implement user model:
-
 from app import db, login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -26,7 +24,7 @@ class User(UserMixin,db.Model):
 class UserCurrencies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     currency = db.Column(db.String(140))
-    amount = db.Column(db.Integer)
+    amount = db.Column(db.String(140))
     symbol = db.Column(db.String(140))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 

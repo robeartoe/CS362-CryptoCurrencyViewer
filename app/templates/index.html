@@ -27,9 +27,9 @@
 <body class="white">
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="static/js/materialize.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/materialize.min.js')}}"></script>
   <!-- Personal JS -->
-  <script type="text/javascript " src="static/js/main.js"></script>
+  <script type="text/javascript " src="{{url_for('static',filename='js/main.js')}}"></script>
 
   <nav class="light-blue lighten-2">
     <div class="nav-wrapper">
@@ -53,7 +53,6 @@
   </nav>
 
 
-<!-- TODO: See if this or Toast will be better options. -->
   {% with messages = get_flashed_messages() %}
   {% if messages %}
     {% for message in messages %}

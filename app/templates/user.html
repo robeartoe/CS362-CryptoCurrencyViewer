@@ -1,6 +1,5 @@
 {% extends "index.html" %}
 {% block content %}
-<!-- TODO: Draft UserPage and figure out pulling out info from database. -->
   <main>
     <div class="container" style="padding-top:5px">
       <div class="row">
@@ -10,17 +9,48 @@
         <div class="col s9">
           <ul class="collection">
             {%for item in currencies%}
-              <li class="collection-item avatar">
+              <li class="collection-item avatar" id="li{{item.currency}}">
+                <span>
+                  <a href="{{url_for('currency',id=item.currency)}}">
                 {%if coinInfo[item.symbol] is defined%}
                 <img class="circle" src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
                 {%else%}
                 <i class="material-icons medium left">broken_image</i>
                 {%endif%}
+                  </a>
+              </span>
                 <span class="title">{{item.currency}}</span>
-                <p>Amount: ${{item.amount}}</p>
-
-                <a href="#!" class="secondary-content"><i class="material-icons light-blue-text">mode_edit</i></a>
+                <p>Amount: $ <span id="money">{{item.amount}}</span></p>
+                <a href="#!" class="secondary-content"><i class="material-icons light-blue-text modal-trigger" onclick="modalCurrency('{{item.currency}}','#modal{{item.currency}}');">mode_edit</i></a>
               </li>
+              <!-- TODO: Finish Modal for updating/deleting currency -->
+              <div id="modal{{item.currency}}" class="modal">
+                <div class="modal-content">
+                  <h4 class="center-align">Update Currency: {{item.currency}}</h4>
+                  <form onsubmit="updateCurrency('{{item['currency']}}','#modal{{item['currency']}}','{{item['symbol']}}');">
+                    <div class="input-field">
+                      <i class="material-icons prefix light-blue-text">attach_money</i>
+                      <input id="money" type="text">
+                      <label class="light-blue-text" for="icon_prefix">Currency Amount:</label>
+                    </div>
+                    <button class="btn waves-effect waves-light light-blue" type="submit" name="action" >Update
+                      <i class="material-icons right light-blue">send</i>
+                    </button>
+                    <a class="waves-effect waves-light btn red " onclick="removeCurrency('{{item['currency']}}','modal{{item['currency']}}')"><i class="material-icons right">delete</i>Delete</a>
+                  </form>
+                </div>
+              </div>
+              <div id="deletemodal{{item.currency}}" class="modal">
+                <div class="modal-content">
+                  <h4 class="center">Are you sure you want to delete:</h4>
+                  <h5 class="center">{{item.currency}}</h5></h5>
+                </div>
+                <div class="modal-footer">
+                  <a class="waves-effect waves-light btn red" id="confirmDelete{{item.currency}}"><i class="material-icons right">delete</i>Delete</a>
+                  <a class="waves-effect waves-light btn modal-close light-blue">Cancel</a>
+                </div>
+              </div>
+
             {%endfor%}
           </ul>
         </div>
