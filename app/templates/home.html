@@ -25,7 +25,7 @@
               <div class="modal-content">
                 <h4 class="center-align">Add Currency: {{item['name']}}</h4>
                 <h5>Current Price: ${{item['price_usd']}}</h5>
-                <form onsubmit="addCurrency('{{item['id']}}','#modal{{item['id']}}','{{item['symbol']}}');">
+                <form onsubmit=" return addCurrency('{{item['id']}}','#modal{{item['id']}}','{{item['symbol']}}');">
                   <div class="input-field">
                     <i class="material-icons prefix light-blue-text">attach_money</i>
                     <input id="money" type="text">

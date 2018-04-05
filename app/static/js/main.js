@@ -33,7 +33,8 @@ function addCurrency(currencyID,modalID,symbol){
     Materialize.toast('I have failed to add a currency! This currency has already been added!', 4000) // 4000 is the duration of the toast
   })
   return false;
-}
+};
+
 function updateCurrency(currencyID,modalID){
   console.log("updateCurrency Called");
   $(modalID).modal('close');
