@@ -2,6 +2,29 @@
 {% block content %}
 <!-- TODO: Draft UserPage and figure out pulling out info from database. -->
   <main>
+    <div class="container" style="padding-top:5px">
+      <div class="row">
+        <div class="col s3">
+          <h3 class="light-blue-text center-align">{{user}}</h3>
+        </div>
+        <div class="col s9">
+          <ul class="collection">
+            {%for item in currencies%}
+              <li class="collection-item avatar">
+                {%if coinInfo[item.symbol] is defined%}
+                <img class="circle" src="https://www.cryptocompare.com{{coinInfo[item.symbol].ImageUrl}}" alt="">
+                {%else%}
+                <i class="material-icons medium left">broken_image</i>
+                {%endif%}
+                <span class="title">{{item.currency}}</span>
+                <p>Amount: ${{item.amount}}</p>
 
+                <a href="#!" class="secondary-content"><i class="material-icons light-blue-text">mode_edit</i></a>
+              </li>
+            {%endfor%}
+          </ul>
+        </div>
+      </div>
+    </div>
   </main>
 {% endblock %}

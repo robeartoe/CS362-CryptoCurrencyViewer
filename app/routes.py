@@ -61,25 +61,33 @@ def signup():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('user.html',user=user)
+
+    currencies = UserCurrencies.query.filter_by(user_id=user.id).all()
+    coinList = getCoinList()
+
+    # print(user)
+    # print(currencies)
+    return render_template('user.html',user=user.username,currencies=currencies,coinInfo = coinList)
 
 @app.route('/addCurrency',methods=['GET','POST'])
 @login_required
 def addCurrency():
     ID =  request.form['currencyID']
     Amount = request.form['currencyAmount']
-    print(ID,Amount)
-    return json.dumps({'status':'OK','ID':ID,'Amount':Amount})
-    
-    # coin = request.args.get('coin')
-    # # page = request.args.get('page',1,type=int)
-    # user = User.query.filter_by(username=current_user.username).first_or_404()
-    # currency = UserCurrencies(currency=coin,user_id=user.id)
-    # db.session.add(currency)
-    # db.session.commit()
-    # flash("Added Currency: {} to your account!".format(coin))
-    # print("Added Currency: {} in {}".format(coin,currency))
-    # return redirect(url_for('index'))
+    symbol = request.form['currencySymbol']
+    print(ID,Amount,symbol)
+    user = User.query.filter_by(username=current_user.username).first_or_404()
+
+    currency = UserCurrencies(currency=ID,user_id=user.id,amount = Amount,symbol=symbol)
+
+    exists = db.session.query(UserCurrencies.user_id).filter_by(currency=ID).scalar()
+    if ( exists is not None):
+        print(exist)
+        return json.dumps({'status':'error','ID':ID,'Amount':Amount})
+    else:
+        db.session.add(currency)
+        db.session.commit()
+        return json.dumps({'status':'OK','ID':ID,'Amount':Amount})
 
 #TODO: Implment Resources Page
 @app.route('/resources')

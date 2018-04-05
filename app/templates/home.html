@@ -15,24 +15,25 @@
                 {% else %}
                 <h4>No Picture Available</h4>
                 {% endif %}
-                 </a></span>
-                 {% if current_user.is_anonymous %}
+                </a>
+            </span>
+            {% if current_user.is_anonymous %}
             <a href="{{url_for('login')}}" class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
             {% else %}
-            <a class="btn-floating halfway-fab waves-effect waves-light light-blue modal-trigger" href="#" onclick="modalCurrency('{{item['id']}}','#modal{{item['id']}}');"><i class="material-icons">add</i></a> {% endif %}
-
+            <a class="btn-floating halfway-fab waves-effect waves-light light-blue modal-trigger" href="#" onclick="modalCurrency('{{item['id']}}','#modal{{item['id']}}');"><i class="material-icons">add</i></a>
+            {% endif %}
             <div id="modal{{item['id']}}" class="modal">
               <div class="modal-content">
                 <h4 class="center-align">Add Currency: {{item['name']}}</h4>
                 <h5>Current Price: ${{item['price_usd']}}</h5>
-                <form onsubmit="addCurrency('{{item['id']}}','#modal{{item['id']}}');">
+                <form onsubmit="addCurrency('{{item['id']}}','#modal{{item['id']}}','{{item['symbol']}}');">
                   <div class="input-field">
-                    <i class="material-icons prefix">attach_money</i>
+                    <i class="material-icons prefix light-blue-text">attach_money</i>
                     <input id="money" type="text">
-                    <label for="icon_prefix">Currency Amount:</label>
+                    <label class="light-blue-text" for="icon_prefix">Currency Amount:</label>
                   </div>
-                  <button class="btn waves-effect waves-light" type="submit" name="action" >Submit
-                    <i class="material-icons right">send</i>
+                  <button class="btn waves-effect waves-light light-blue" type="submit" name="action" >Submit
+                    <i class="material-icons right light-blue">send</i>
                   </button>
                 </form>
               </div>
@@ -56,9 +57,29 @@
                 {% else %}
                 <h4>No Picture Available</h4>
                 {% endif %}
-                 </a></span> {% if current_user.is_anonymous %}
-            <a href="{{url_for('login')}}" class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a> {% else %}
-            <a class="btn-floating halfway-fab waves-effect waves-light light-blue" href="{{url_for('addCurrency',coin = item.id)}}"><i class="material-icons">add</i></a> {% endif %} </div>
+                 </a></span>
+            {% if current_user.is_anonymous %}
+            <a href="{{url_for('login')}}" class="btn-floating halfway-fab waves-effect waves-light light-blue"><i class="material-icons">add</i></a>
+            {% else %}
+            <a class="btn-floating halfway-fab waves-effect waves-light light-blue modal-trigger" href="#" onclick="modalCurrency('{{item['id']}}','#modal{{item['id']}}');"><i class="material-icons">add</i></a>
+             {% endif %}
+             <div id="modal{{item['id']}}" class="modal">
+               <div class="modal-content">
+                 <h4 class="center-align">Add Currency: {{item['name']}}</h4>
+                 <h5>Current Price: ${{item['price_usd']}}</h5>
+                 <form onsubmit="addCurrency('{{item['id']}}','#modal{{item['id']}}','{{item['symbol']}}');">
+                   <div class="input-field">
+                     <i class="material-icons prefix light-blue-text">attach_money</i>
+                     <input id="money" type="text">
+                     <label for="icon_prefix light-blue-text">Currency Amount:</label>
+                   </div>
+                   <button class="btn waves-effect waves-light light-blue" type="submit" name="action" >Submit
+                     <i class="material-icons right light-blue-text">send</i>
+                   </button>
+                 </form>
+               </div>
+             </div>
+           </div>
           <div class="card-content">
             <span class="card-title"><a href="{{ url_for('currency',id=item.id) }}" class="nostyle">{{item["name"]}} </a></span>
             <p>Current Price: {{item["price_usd"]}} USD</p>

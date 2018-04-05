@@ -26,7 +26,8 @@ class User(UserMixin,db.Model):
 class UserCurrencies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     currency = db.Column(db.String(140))
-    # amount = db.Column(db.Integer)
+    amount = db.Column(db.Integer)
+    symbol = db.Column(db.String(140))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
