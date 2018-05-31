@@ -4,8 +4,15 @@ A Dynamic Web App built on HTML, CSS and Flask to display current cryptocurrency
 Users can also create accounts and maintain a portfolio.
 
 ---
+## Screenshots:
+![](https://github.com/robeartoe/CS362-CryptoCurrencyViewer/blob/master/Images/mainPage.png)
+![](https://github.com/robeartoe/CS362-CryptoCurrencyViewer/blob/master/Images/currency.png)
+![](https://github.com/robeartoe/CS362-CryptoCurrencyViewer/blob/master/Images/user2.png)
 
-## Instructions(For Group):
+## Frameworks Used:
+HTML, CSS, Flask, JQuery,Ajax, and SqlAlchemy.
+
+## Installation:
 
 1. It's **HIGHLY** recommended to have a virtualenv running, when setting up the packages and enviroment for this project. More info about getting and setting up a virtualenv can be found  [here](http://docs.python-guide.org/en/latest/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more) .
 
@@ -30,18 +37,8 @@ export FLASK_APP=run.py
 flask run
 ```
 
-## Resources (For Group):
-[Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
-  * This source is **REALLY** useful. It provides a ton of info and tutorials on backend programming on flask.
+## Credits:
+This project wouldn't have been made possible without the help of John Nguyen, and Fares Alfowzan. 
 
-[Flask-SQLAlchemy Documentation](http://flask-sqlalchemy.pocoo.org/2.3/)
-  * Documentation for SQLAlchemy.
-
-[Flask Web Forms](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms)
-  * Nice tutorial on setting up Flask Forms.
-
-[Flask DataBase](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)
-  * Nice Tutorial on setting up Databases and models. Uses SQLAlchemy.
-
-[Flask Logins](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins)
-  * Tutorial on logging in users.
+## License:
+This project is created under the MIT License. 
