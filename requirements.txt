@@ -11,7 +11,7 @@ get==0.0.39
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 post==0.0.26
 public==0.0.65
